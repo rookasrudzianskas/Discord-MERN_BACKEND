@@ -86,6 +86,8 @@ app.post('/new/message', (req, res) => {
 })
 
 app.get('/get/data', (req, res) => {
+    const id = req.query.id;
+
     mongoData.find((err, data) => {
         if(err) {
             res.status(500).send(err);
