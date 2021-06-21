@@ -15,7 +15,19 @@ app.use(cors());
 
 // db config
 
-const mongoURI = 'mongodb+srv://admin:f9bdztDnqB1AojlZ@cluster0.mfuw3.mongodb.net/backend-discord?retryWrites=true&w=majority'
+const mongoURI = 'mongodb+srv://admin:f9bdztDnqB1AojlZ@cluster0.mfuw3.mongodb.net/backend-discord?retryWrites=true&w=majority';
+
+mongoose.connect(mongoURI, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+mongoose.connection.once('open', () => {
+    console.log("DB is working on");
+})
+
+
 // api routes
 app.get('/', (req, res) => res.status(200).send("Backend is working on 🚀"));
 
