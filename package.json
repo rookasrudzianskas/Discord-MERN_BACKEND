@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/rookasrudzianskas/Discord-MERN_BACKEND/issues"
   },
-  "homepage": "https://github.com/rookasrudzianskas/Discord-MERN_BACKEND#readme"
+  "homepage": "https://github.com/rookasrudzianskas/Discord-MERN_BACKEND#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.14",
+    "pusher": "^5.0.0"
+  }
 }
