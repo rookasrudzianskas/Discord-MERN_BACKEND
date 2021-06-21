@@ -105,7 +105,7 @@ app.get("/get/conversation", (req, res) => {
             res.status(500).send(err);
         } else {
             // send data that we just added in the DB
-            res.status(200).send(channels);
+            res.status(200).send(data);
         }
     });
 });
