@@ -34,6 +34,22 @@ mongoose.connect(mongoURI, {
 
 mongoose.connection.once('open', () => {
     console.log("DB is working on");
+
+    const changeStream = mongoose.connection.collection('conversations').watch();
+
+    changeStream.on('change', (change) => {
+        if(change.operationType === 'insert') {
+            pusher.trigger('channels', 'newChannel', {
+                'change': change,
+            });
+        } else if (change.operationType ==='update') {
+            pusher.trigger('conversation', 'newMessage', {
+                'change': change,
+            });
+        } else {
+            console.log("error triggerring the pusher down");
+        }
+    })
 })
 
 
