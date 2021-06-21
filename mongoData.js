@@ -14,4 +14,6 @@ const discordSchema = mongoose.Schema({
             }
         }
     ]
-})
+});
+
+export default mongoose.model('conversations', discordSchema);
