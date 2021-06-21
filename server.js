@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import Pusher from "pusher";
 import mongoose from "mongoose";
+import mongoData from "./mongoData.js";
 
 // app config
 const app = express();
@@ -17,6 +18,18 @@ app.use(cors());
 const mongoURI = 'mongodb+srv://admin:f9bdztDnqB1AojlZ@cluster0.mfuw3.mongodb.net/backend-discord?retryWrites=true&w=majority'
 // api routes
 app.get('/', (req, res) => res.status(200).send("Backend is working on 🚀"));
+
+app.post('/new/channel', (req, res) => {
+    const dbData = req.body;
+
+    mongoData.create(dbData, (err, data) => {
+        if(err) {
+            res.status(500).send(err);
+        } else {
+            res.status(201).send(data);
+        }
+    })
+})
 
 // listen
 
