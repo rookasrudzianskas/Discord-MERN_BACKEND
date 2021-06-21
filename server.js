@@ -67,10 +67,12 @@ app.post('/new/message', (req, res) => {
     const id = req.query.id;
     const newMessage = req.body;
 
+    // updates the db
     mongoData.update(
         // this is the conversation, where I want to add the conversation
         {_id: req.query.id},
-        {$push: }
+        // and we inject the message here
+        {$push: {conversation: req.body } }
     )
 })
 // listen
