@@ -84,6 +84,18 @@ app.post('/new/message', (req, res) => {
         }
     )
 })
+
+app.get('/get/data', (req, res) => {
+    mongoData.find((err, data) => {
+        if(err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(data);
+        }
+    })
+})
+
+
 // listen
 
 app.listen(port, () => console.log(`The app is listening on ${port}`));
