@@ -63,6 +63,16 @@ app.get('/get/channelList', (req, res) => {
     })
 })
 
+app.post('/new/message', (req, res) => {
+    const id = req.query.id;
+    const newMessage = req.body;
+
+    mongoData.update(
+        // this is the conversation, where I want to add the conversation
+        {_id: req.query.id},
+        {$push: }
+    )
+})
 // listen
 
 app.listen(port, () => console.log(`The app is listening on ${port}`));
