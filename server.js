@@ -72,7 +72,16 @@ app.post('/new/message', (req, res) => {
         // this is the conversation, where I want to add the conversation
         {_id: req.query.id},
         // and we inject the message here
-        {$push: {conversation: req.body } }
+        {$push: {conversation: req.body } },
+        (err, data) => {
+            if(err) {
+                console.log("error saving the message");
+                console.log(err);
+                res.status(500).send(err);
+            } else {
+                res.status(201).send(data);
+            }
+        }
     )
 })
 // listen
