@@ -8,6 +8,15 @@ import mongoData from "./mongoData.js";
 // app config
 const app = express();
 const port = process.env.PORT || 9003;
+
+const pusher = new Pusher({
+    appId: "1222860",
+    key: "eb7cd7f1e1f39229a9e3",
+    secret: "914d793ac06f313ce531",
+    cluster: "eu",
+    useTLS: true
+});
+
 // middlewares
 
 app.use(express.json());
